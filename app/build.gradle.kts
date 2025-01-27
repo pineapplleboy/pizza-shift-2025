@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.pizzashift"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.pizzashift"
@@ -56,4 +56,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.glide)
+    implementation(libs.compose)
 }
