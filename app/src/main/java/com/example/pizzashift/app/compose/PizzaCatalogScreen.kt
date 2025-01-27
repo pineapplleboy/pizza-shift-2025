@@ -34,7 +34,7 @@ fun PizzaCatalogScreen(
     ) {
         Text(
             text = "Pizza Catalog",
-            fontFamily = FontFamily(Font(R.font.poppins_font_family)),
+            fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
             fontWeight = FontWeight.Bold,
             fontSize = 24.sp
         )

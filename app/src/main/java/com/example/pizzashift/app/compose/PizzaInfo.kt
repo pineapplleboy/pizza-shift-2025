@@ -23,14 +23,14 @@ fun PizzaInfo(
     ) {
         Text(
             text = pizza.name,
-            fontFamily = FontFamily(Font(R.font.poppins_font_family)),
+            fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
             fontWeight = FontWeight.SemiBold,
             fontSize = 20.sp
         )
 
         Text(
             text = pizza.description,
-            fontFamily = FontFamily(Font(R.font.poppins_font_family)),
+            fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
             fontSize = 14.sp
         )
     }
