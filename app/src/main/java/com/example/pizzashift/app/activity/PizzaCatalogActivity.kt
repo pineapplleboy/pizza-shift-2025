@@ -1,4 +1,4 @@
-package com.example.pizzashift
+package com.example.pizzashift.app.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,41 +7,34 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.example.pizzashift.app.compose.PizzaCatalogScreen
+import com.example.pizzashift.app.viewmodel.PizzaCatalogViewModel
 import com.example.pizzashift.ui.theme.PizzaShiftTheme
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : ComponentActivity() {
+class PizzaCatalogActivity : ComponentActivity() {
+
+    private val vm by viewModel<PizzaCatalogViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             PizzaShiftTheme {
+
+                val pizzas by vm.pizzas.observeAsState()
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+
+                    PizzaCatalogScreen(
+                        pizzas = pizzas ?: listOf(),
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PizzaShiftTheme {
-        Greeting("Android")
     }
 }
