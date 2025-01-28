@@ -1,6 +1,7 @@
 package com.example.pizzashift.app.compose
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,7 +22,8 @@ import com.example.pizzashift.domain.model.Pizza
 @Composable
 fun PizzaCard(
     pizza: Pizza,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: (String) -> Unit
 ){
     Column(
         modifier = modifier
@@ -32,6 +34,9 @@ fun PizzaCard(
                 shape = RoundedCornerShape(16.dp)
             )
             .padding(16.dp)
+            .clickable {
+                onClick(pizza.id)
+            }
     ) {
         GlideImage(
             model = pizza.img,

@@ -1,5 +1,6 @@
 package com.example.pizzashift.app.di
 
+import com.example.pizzashift.data.AppConstants
 import com.example.pizzashift.data.network.PizzaApi
 import com.example.pizzashift.data.repository.PizzaRepositoryImpl
 import com.example.pizzashift.domain.repository.PizzaRepository
@@ -20,7 +21,7 @@ val dataModule = module {
             .build()
 
         Retrofit.Builder()
-            .baseUrl("https://shift-intensive.ru/api/")
+            .baseUrl(AppConstants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
@@ -28,7 +29,7 @@ val dataModule = module {
 
     single { get<Retrofit>().create(PizzaApi::class.java) }
 
-    single<PizzaRepository>{
+    factory<PizzaRepository>{
         PizzaRepositoryImpl(get())
     }
 }

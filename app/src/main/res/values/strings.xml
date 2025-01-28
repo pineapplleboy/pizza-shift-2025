@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Pizza Shift</string>
+    <string name="error_title">Произошла ошибка</string>
+    <string name="error_try_again">Повторить</string>
+    <string name="error_unknown_error">Неизвестная ошибка</string>
+    <string name="pizza_screen_title">Пицца</string>
+    <string name="pizza_size_small">Маленькая</string>
+    <string name="pizza_size_medium">Средняя</string>
+    <string name="pizza_size_large">Большая</string>
+    <string name="cost">%1$s ₽</string>
 </resources>
