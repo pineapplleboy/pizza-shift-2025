@@ -1,12 +1,10 @@
-package com.example.pizzashift.app.compose
+package com.example.pizzashift.app.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -23,16 +21,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pizzashift.R
+import com.example.pizzashift.app.compose.ErrorComponent
+import com.example.pizzashift.app.compose.LoadingComponent
+import com.example.pizzashift.app.compose.PizzaCard
 import com.example.pizzashift.app.state.PizzaCatalogState
 import com.example.pizzashift.app.viewmodel.PizzaCatalogViewModel
-import com.example.pizzashift.domain.model.Pizza
 
 @Composable
 fun PizzaCatalogScreen(
+    onPizzaSelected: (String) -> Unit,
     vm: PizzaCatalogViewModel,
     modifier: Modifier = Modifier
 ) {
-
     val pizzaState by vm.state.collectAsState()
 
     Column(
@@ -66,7 +66,9 @@ fun PizzaCatalogScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 items(state.pizzas) { pizza ->
-                    PizzaCard(pizza = pizza)
+                    PizzaCard(pizza = pizza) {
+                        onPizzaSelected(it)
+                    }
                 }
             }
         }

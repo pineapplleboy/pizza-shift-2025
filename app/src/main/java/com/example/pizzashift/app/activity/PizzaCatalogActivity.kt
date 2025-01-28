@@ -7,17 +7,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import com.example.pizzashift.app.compose.PizzaCatalogScreen
-import com.example.pizzashift.app.viewmodel.PizzaCatalogViewModel
+import androidx.navigation.compose.rememberNavController
+import com.example.pizzashift.app.navigation.MainNavHost
 import com.example.pizzashift.ui.theme.PizzaShiftTheme
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PizzaCatalogActivity : ComponentActivity() {
-
-    private val vm by viewModel<PizzaCatalogViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +22,10 @@ class PizzaCatalogActivity : ComponentActivity() {
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
-                    PizzaCatalogScreen(
-                        vm = vm,
+                    val navController = rememberNavController()
+
+                    MainNavHost(
+                        navController = navController,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
