@@ -1,5 +1,6 @@
 package com.example.pizzashift.app.compose
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -43,11 +44,11 @@ fun PizzaCatalogScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 16.dp),
-            contentPadding = PaddingValues(top = 16.dp)
+            contentPadding = PaddingValues(top = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             items(pizzas) { pizza ->
                 PizzaCard(pizza = pizza)
-                Spacer(Modifier.height(16.dp))
             }
         }
     }
