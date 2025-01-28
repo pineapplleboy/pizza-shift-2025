@@ -25,12 +25,10 @@ class PizzaCatalogActivity : ComponentActivity() {
         setContent {
             PizzaShiftTheme {
 
-                val pizzas by vm.pizzas.observeAsState()
-
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
                     PizzaCatalogScreen(
-                        pizzas = pizzas ?: listOf(),
+                        vm = vm,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
