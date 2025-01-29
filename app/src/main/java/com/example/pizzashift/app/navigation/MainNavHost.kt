@@ -23,10 +23,10 @@ fun MainNavHost(navController: NavHostController, modifier: Modifier = Modifier)
     ) {
         composable<NavRoutes.Catalog> {
 
-            val vm = koinViewModel<PizzaCatalogViewModel>()
+            val viewModel = koinViewModel<PizzaCatalogViewModel>()
 
             PizzaCatalogScreen(
-                vm = vm,
+                viewModel = viewModel,
                 onPizzaSelected = { navController.navigate(NavRoutes.Pizza.createRoute(it)) },
                 modifier = modifier
             )
@@ -38,10 +38,10 @@ fun MainNavHost(navController: NavHostController, modifier: Modifier = Modifier)
         ) { backStackEntry ->
 
             val pizzaId = backStackEntry.arguments?.getString("pizza")
-            val vm = koinViewModel<PizzaDetailsViewModel>(parameters = { parametersOf(pizzaId) })
+            val viewModel = koinViewModel<PizzaDetailsViewModel>(parameters = { parametersOf(pizzaId) })
 
             PizzaDetailsScreen(
-                vm = vm,
+                viewModel = viewModel,
                 modifier = modifier
             )
         }

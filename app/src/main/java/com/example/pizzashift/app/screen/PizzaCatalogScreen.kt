@@ -30,10 +30,10 @@ import com.example.pizzashift.app.viewmodel.PizzaCatalogViewModel
 @Composable
 fun PizzaCatalogScreen(
     onPizzaSelected: (String) -> Unit,
-    vm: PizzaCatalogViewModel,
+    viewModel: PizzaCatalogViewModel,
     modifier: Modifier = Modifier
 ) {
-    val pizzaState by vm.state.collectAsState()
+    val pizzaState by viewModel.state.collectAsState()
 
     Column(
         modifier = modifier
@@ -55,7 +55,7 @@ fun PizzaCatalogScreen(
 
             is PizzaCatalogState.Failure -> ErrorComponent(
                 message = state.message ?: stringResource(id = R.string.error_unknown_error),
-                onRetry = { vm.getPizzaCatalog() },
+                onRetry = { viewModel.getPizzaCatalog() },
             )
 
             is PizzaCatalogState.Content -> LazyColumn(

@@ -35,10 +35,10 @@ import com.example.pizzashift.domain.model.Pizza
 
 @Composable
 fun PizzaDetailsScreen(
-    vm: PizzaDetailsViewModel,
+    viewModel: PizzaDetailsViewModel,
     modifier: Modifier = Modifier
 ) {
-    val pizzaState by vm.state.collectAsState()
+    val pizzaState by viewModel.state.collectAsState()
 
     when(val state = pizzaState) {
 
@@ -47,7 +47,7 @@ fun PizzaDetailsScreen(
 
         is PizzaDetailsState.Failure -> ErrorComponent(
             message = state.message ?: stringResource(id = R.string.error_unknown_error),
-            onRetry = { vm.getPizza() },
+            onRetry = { viewModel.getPizza() },
         )
 
         is PizzaDetailsState.Content -> PizzaDetailsContent(
