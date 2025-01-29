@@ -5,5 +5,6 @@ data class OrderedPizza(
     val name: String,
     val toppings: List<OrderedPizzaIngredient>,
     val size: PizzaSize,
-    val doughs: List<PizzaDough>
+    val doughs: PizzaDough,
+    val img: String
 )

@@ -28,6 +28,7 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.example.pizzashift.shared.R
 import com.example.pizzashift.component.ErrorComponent
 import com.example.pizzashift.component.LoadingComponent
+import com.example.pizzashift.component.ScreenHead
 import com.example.pizzashift.feature.pizza_details.presentation.PizzaDetailsState
 import com.example.pizzashift.feature.pizza_details.presentation.PizzaDetailsViewModel
 import com.example.pizzashift.shared.domain.model.Pizza
@@ -66,33 +67,7 @@ fun PizzaDetailsContent( //Сейчас скроллится не вся стр�
         modifier = modifier
             .fillMaxSize()
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    vertical = 12.dp,
-                    horizontal = 16.dp
-                ),
-            horizontalArrangement = Arrangement.spacedBy(32.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            IconButton(
-                onClick = { }
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_left),
-                    contentDescription = "Back",
-                    modifier = Modifier.size(24.dp)
-                )
-            }
-
-            Text(
-                text = stringResource(R.string.pizza_screen_title),
-                fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            )
-        }
+        ScreenHead(stringResource(R.string.pizza_screen_title))
 
         Column(
             modifier = Modifier

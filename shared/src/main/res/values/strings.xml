@@ -8,4 +8,5 @@
     <string name="pizza_size_medium">Средняя</string>
     <string name="pizza_size_large">Большая</string>
     <string name="cost">%1$s ₽</string>
+    <string name="cart_screen_title">Корзина</string>
 </resources>
