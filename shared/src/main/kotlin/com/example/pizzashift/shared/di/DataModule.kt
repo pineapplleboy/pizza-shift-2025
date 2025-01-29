@@ -1,4 +1,4 @@
-package com.example.pizzashift.di
+package com.example.pizzashift.shared.di
 
 import com.example.pizzashift.shared.data.DataConstants
 import com.example.pizzashift.shared.data.network.PizzaApi

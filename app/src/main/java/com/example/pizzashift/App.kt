@@ -1,9 +1,10 @@
 package com.example.pizzashift
 
 import android.app.Application
-import com.example.pizzashift.di.appModule
-import com.example.pizzashift.di.dataModule
-import com.example.pizzashift.di.domainModule
+import com.example.pizzashift.shared.di.dataModule
+import com.example.pizzashift.shared.di.domainModule
+import com.example.pizzashift.feature.pizza_catalog.di.pizzaCatalogModule
+import com.example.pizzashift.feature.pizza_details.di.pizzaDetailsModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -17,7 +18,14 @@ class App: Application() {
         startKoin{
             androidLogger(Level.DEBUG)
             androidContext(this@App)
-            modules(listOf(appModule, dataModule, domainModule))
+            modules(
+                listOf(
+                    dataModule,
+                    domainModule,
+                    pizzaDetailsModule,
+                    pizzaCatalogModule
+                )
+            )
         }
     }
 }
