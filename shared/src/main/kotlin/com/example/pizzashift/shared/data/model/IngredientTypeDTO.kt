@@ -1,0 +1,7 @@
+package com.example.pizzashift.shared.data.model
+
+enum class IngredientTypeDTO {
+    PINEAPPLE, MOZZARELLA, PEPERONI, GREEN_PEPPER, MUSHROOMS, BASIL, CHEDDAR,
+    PARMESAN, FETA, HAM, PICKLE, TOMATO, BACON, ONION, CHILE, SHRIMPS,
+    CHICKEN_FILLET, MEATBALLS
+}
