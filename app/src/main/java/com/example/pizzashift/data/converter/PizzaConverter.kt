@@ -1,6 +1,6 @@
 package com.example.pizzashift.data.converter
 
-import com.example.pizzashift.data.AppConstants
+import com.example.pizzashift.data.DataConstants
 import com.example.pizzashift.data.model.PizzaDTO
 import com.example.pizzashift.domain.model.Pizza
 
@@ -23,6 +23,6 @@ fun PizzaDTO.toDomainModel(): Pizza {
         isGlutenFree = this.isGlutenFree,
         isNew = this.isNew,
         isHit = this.isHit,
-        img = AppConstants.BASE_URL + this.img
+        img = DataConstants.BASE_URL + this.img
     )
 }

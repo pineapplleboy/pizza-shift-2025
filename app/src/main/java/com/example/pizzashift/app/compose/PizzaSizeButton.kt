@@ -23,7 +23,7 @@ fun PizzaSizeButton(
     isActive: Boolean = false
 ) {
     TextButton(
-        onClick = { },
+        onClick = {},
         modifier = modifier
             .fillMaxWidth()
             .background(
@@ -32,10 +32,10 @@ fun PizzaSizeButton(
             )
     ) {
         Text(
-            text = when(size) {
-                SizeType.SMALL -> stringResource(R.string.pizza_size_small)
+            text = when (size) {
+                SizeType.SMALL  -> stringResource(R.string.pizza_size_small)
                 SizeType.MEDIUM -> stringResource(R.string.pizza_size_medium)
-                SizeType.LARGE -> stringResource(R.string.pizza_size_large)
+                SizeType.LARGE  -> stringResource(R.string.pizza_size_large)
             },
             fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
             fontSize = 14.sp,

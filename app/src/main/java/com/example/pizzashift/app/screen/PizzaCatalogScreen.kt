@@ -26,6 +26,7 @@ import com.example.pizzashift.app.compose.LoadingComponent
 import com.example.pizzashift.app.compose.PizzaCard
 import com.example.pizzashift.app.state.PizzaCatalogState
 import com.example.pizzashift.app.viewmodel.PizzaCatalogViewModel
+import com.example.pizzashift.domain.model.Pizza
 
 @Composable
 fun PizzaCatalogScreen(
@@ -58,18 +59,30 @@ fun PizzaCatalogScreen(
                 onRetry = { viewModel.getPizzaCatalog() },
             )
 
-            is PizzaCatalogState.Content -> LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 16.dp),
-                contentPadding = PaddingValues(top = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                items(state.pizzas) { pizza ->
-                    PizzaCard(pizza = pizza) {
-                        onPizzaSelected(it)
-                    }
-                }
+            is PizzaCatalogState.Content -> PizzaCatalogContent(
+                pizzas = state.pizzas,
+                onPizzaSelected = onPizzaSelected
+            )
+        }
+    }
+}
+
+@Composable
+fun PizzaCatalogContent(
+    pizzas: List<Pizza>,
+    onPizzaSelected: (String) -> Unit,
+    modifier: Modifier = Modifier
+){
+    LazyColumn(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
+        contentPadding = PaddingValues(top = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(pizzas) { pizza ->
+            PizzaCard(pizza = pizza) {
+                onPizzaSelected(it)
             }
         }
     }
