@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -35,6 +36,7 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.example.pizzashift.shared.R
 import com.example.pizzashift.component.ErrorComponent
 import com.example.pizzashift.component.LoadingComponent
+import com.example.pizzashift.component.OrangeButton
 import com.example.pizzashift.component.ScreenHead
 import com.example.pizzashift.feature.pizza_details.presentation.PizzaDetailsState
 import com.example.pizzashift.feature.pizza_details.presentation.PizzaDetailsViewModel
@@ -173,26 +175,14 @@ fun PizzaDetailsContent(
         ) {
             Column {
                 Spacer(modifier = Modifier.height(24.dp))
-                TextButton(
-                    onClick = {
-                        viewModel.addPizzaToCart(
-                            pizza = pizza,
-                            size = size.value,
-                            dough = pizza.doughs[0], //тесто временно по дефолту первое
-                            toppings = toppings.value
-                        )
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(
-                            color = Color.Black,
-                            shape = RoundedCornerShape(16.dp)
-                        )
+                OrangeButton(
+                    text = stringResource(com.example.pizzashift.feature.pizza_details.R.string.add_to_cart)
                 ) {
-                    Text(
-                        text = stringResource(com.example.pizzashift.feature.pizza_details.R.string.add_to_cart),
-                        color = Color.White,
-                        fontSize = 16.sp
+                    viewModel.addPizzaToCart(
+                        pizza = pizza,
+                        size = size.value,
+                        dough = pizza.doughs[0], //тесто временно по дефолту первое
+                        toppings = toppings.value
                     )
                 }
             }
