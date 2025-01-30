@@ -37,4 +37,24 @@ interface PizzaDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertToppings(toppings: List<OrderedPizzaIngredientEntity>)
+
+
+    @Query("DELETE FROM ordered_pizzas")
+    fun deleteAllOrderedPizzas()
+
+    @Query("DELETE FROM pizza_sizes")
+    fun deleteAllPizzaSizes()
+
+    @Query("DELETE FROM pizza_doughs")
+    fun deleteAllPizzaDoughs()
+
+    @Query("DELETE FROM ordered_pizza_ingredients")
+    fun deleteAllPizzaIngredients()
+
+    @Transaction
+    suspend fun clearDatabase() {
+        deleteAllOrderedPizzas()
+        deleteAllPizzaSizes()
+        deleteAllPizzaDoughs()
+    }
 }

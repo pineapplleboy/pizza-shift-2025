@@ -38,7 +38,12 @@ fun CartScreen(
             onRetry = {},
         )
 
-        is CartState.Content -> {}
+        is CartState.Content -> {
+            CartScreenContent(
+                pizzas = state.pizzas,
+                modifier = modifier
+            )
+        }
     }
 }
 

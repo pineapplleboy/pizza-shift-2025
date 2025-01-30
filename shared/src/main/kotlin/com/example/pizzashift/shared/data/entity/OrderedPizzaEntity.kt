@@ -22,7 +22,8 @@ import androidx.room.PrimaryKey
     ]
 )
 data class OrderedPizzaEntity(
-    @PrimaryKey val id: String,
+    @PrimaryKey val orderId: String,
+    val id: String,
     val name: String,
     val sizeId: String,
     val doughId: String,

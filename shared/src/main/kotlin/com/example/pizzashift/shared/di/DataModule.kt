@@ -40,7 +40,7 @@ val dataModule = module {
             androidApplication(),
             PizzaDatabase::class.java,
             "pizza_database"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
     single { get<PizzaDatabase>().pizzaDao() }

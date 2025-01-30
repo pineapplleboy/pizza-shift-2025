@@ -16,6 +16,10 @@ class CartViewModel(
     private val _state = MutableStateFlow<CartState>(CartState.Initial)
     val state: StateFlow<CartState> = _state.asStateFlow()
 
+    init {
+        getCart()
+    }
+
     fun getCart() {
         viewModelScope.launch {
             _state.value = CartState.Loading

@@ -14,7 +14,7 @@ import com.example.pizzashift.shared.data.entity.PizzaSizeEntity
         PizzaDoughEntity::class,
         OrderedPizzaIngredientEntity::class
     ],
-    version = 1
+    version = 2
 )
 abstract class PizzaDatabase : RoomDatabase() {
     abstract fun pizzaDao(): PizzaDao

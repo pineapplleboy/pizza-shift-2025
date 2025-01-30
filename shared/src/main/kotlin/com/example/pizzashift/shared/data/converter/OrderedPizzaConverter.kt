@@ -41,9 +41,11 @@ fun OrderedPizza.toEntityModel(): OrderedPizzaWithDetails {
 
     val sizeId = UUID.randomUUID().toString()
     val doughId = UUID.randomUUID().toString()
+    val orderId = UUID.randomUUID().toString()
 
     return OrderedPizzaWithDetails(
         pizza = OrderedPizzaEntity(
+            orderId = orderId,
             id = this.id,
             name = this.name,
             sizeId = sizeId,
@@ -65,7 +67,7 @@ fun OrderedPizza.toEntityModel(): OrderedPizzaWithDetails {
             OrderedPizzaIngredientEntity(
                 name = it.name.name,
                 cost = it.cost,
-                pizzaId = this.id
+                pizzaId = orderId
             )
         }
     )
