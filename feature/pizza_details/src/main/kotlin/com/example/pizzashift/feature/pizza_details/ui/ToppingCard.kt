@@ -1,6 +1,7 @@
 package com.example.pizzashift.feature.pizza_details.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,6 +29,8 @@ import com.example.pizzashift.shared.domain.model.PizzaIngredient
 @Composable
 fun ToppingCard(
     topping: PizzaIngredient,
+    isSelected: Boolean,
+    onClick: (PizzaIngredient) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -35,10 +38,13 @@ fun ToppingCard(
             .fillMaxWidth()
             .shadow(4.dp, shape = RoundedCornerShape(16.dp))
             .background(
-                color = colorResource(R.color.ghost_white),
+                color = if(isSelected) colorResource(R.color.light_green) else colorResource(R.color.ghost_white),
                 shape = RoundedCornerShape(16.dp)
             )
-            .padding(8.dp),
+            .padding(8.dp)
+            .clickable {
+                onClick(topping)
+            },
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         GlideImage(

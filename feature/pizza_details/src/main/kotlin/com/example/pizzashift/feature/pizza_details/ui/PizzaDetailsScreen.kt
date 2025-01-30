@@ -154,7 +154,15 @@ fun PizzaDetailsContent(
         ) { topping ->
             Column {
                 ToppingCard(
-                    topping = topping
+                    topping = topping,
+                    isSelected = toppings.value.contains(topping),
+                    onClick = {
+                        if (toppings.value.contains(it)) {
+                            toppings.value = toppings.value.filter { cur -> cur != it }
+                        } else {
+                            toppings.value += it
+                        }
+                    }
                 )
                 Spacer(modifier = Modifier.height(8.dp))
             }
