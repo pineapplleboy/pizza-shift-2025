@@ -29,7 +29,8 @@ fun CartPizzaItem(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 5.dp)
+            .padding(horizontal = 5.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         GlideImage(
             model = pizza.img,

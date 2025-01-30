@@ -7,6 +7,10 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.pizzashift.feature.cart.presentation.CartViewModel
+import com.example.pizzashift.feature.cart.ui.CartScreen
+import com.example.pizzashift.feature.checkout.presentation.CheckoutViewModel
+import com.example.pizzashift.feature.checkout.ui.CheckoutScreen
 import com.example.pizzashift.feature.pizza_catalog.ui.PizzaCatalogScreen
 import com.example.pizzashift.feature.pizza_details.ui.PizzaDetailsScreen
 import com.example.pizzashift.feature.pizza_catalog.presentation.PizzaCatalogViewModel
@@ -15,16 +19,18 @@ import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Composable
-fun MainNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
+fun MainNavHost(
+    navController: NavHostController,
+    selectedScreen: String = NavRoutes.Catalog.route,
+    modifier: Modifier = Modifier
+) {
     NavHost(
         navController = navController,
-        startDestination = NavRoutes.Catalog,
+        startDestination = selectedScreen,
         modifier = modifier
     ) {
-        composable<NavRoutes.Catalog> {
-
+        composable(NavRoutes.Catalog.route) {
             val viewModel = koinViewModel<PizzaCatalogViewModel>()
-
             PizzaCatalogScreen(
                 viewModel = viewModel,
                 onPizzaSelected = { navController.navigate(NavRoutes.Pizza.createRoute(it)) }
@@ -37,8 +43,24 @@ fun MainNavHost(navController: NavHostController, modifier: Modifier = Modifier)
         ) {
             val pizzaId = it.arguments?.getString("pizza")
             val viewModel = koinViewModel<PizzaDetailsViewModel>(parameters = { parametersOf(pizzaId) })
-
             PizzaDetailsScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+
+        composable(NavRoutes.Cart.route) {
+            val viewModel = koinViewModel<CartViewModel>()
+            CartScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+
+        composable(NavRoutes.Checkout.route) {
+            val viewModel = koinViewModel<CheckoutViewModel>()
+            CheckoutScreen(
+                navController = navController,
                 viewModel = viewModel
             )
         }

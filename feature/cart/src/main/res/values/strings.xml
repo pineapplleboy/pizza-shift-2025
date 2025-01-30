@@ -2,4 +2,5 @@
 <resources>
     <string name="cart_pizza_info">%1$s, %2$s + %3$s</string>
     <string name="change_ordered_pizza_button">Изменить</string>
+    <string name="place_an_order">Оформить заказ</string>
 </resources>

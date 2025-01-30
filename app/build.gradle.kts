@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(project(":feature:pizza_catalog"))
     implementation(project(":feature:pizza_details"))
+    implementation(project(":feature:checkout"))
     implementation(project(":feature:cart"))
     implementation(project(":shared"))
     implementation(project(":component"))

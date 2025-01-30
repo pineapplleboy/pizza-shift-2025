@@ -10,3 +10,11 @@ fun PizzaDoughDTO.toDomainModel(): PizzaDough {
         price = this.price
     )
 }
+
+fun PizzaDough.toDTO(): PizzaDoughDTO {
+
+    return PizzaDoughDTO(
+        name = this.name.toDTO(),
+        price = this.price
+    )
+}

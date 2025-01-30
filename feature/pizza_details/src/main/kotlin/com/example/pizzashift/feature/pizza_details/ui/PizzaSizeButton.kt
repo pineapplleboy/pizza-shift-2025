@@ -20,10 +20,11 @@ import com.example.pizzashift.shared.domain.model.SizeType
 fun PizzaSizeButton(
     size: SizeType,
     modifier: Modifier = Modifier,
-    isActive: Boolean = false
+    isActive: Boolean = false,
+    onClick: () -> Unit
 ) {
     TextButton(
-        onClick = {},
+        onClick = onClick,
         modifier = modifier
             .fillMaxWidth()
             .background(

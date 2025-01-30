@@ -13,8 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.pizzashift.component.ErrorComponent
 import com.example.pizzashift.component.LoadingComponent
+import com.example.pizzashift.component.OrangeButton
 import com.example.pizzashift.component.ScreenHead
 import com.example.pizzashift.feature.cart.presentation.CartState
 import com.example.pizzashift.feature.cart.presentation.CartViewModel
@@ -24,6 +26,7 @@ import com.example.pizzashift.shared.domain.model.OrderedPizza
 @Composable
 fun CartScreen(
     viewModel: CartViewModel,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     val cartState by viewModel.state.collectAsState()
@@ -38,20 +41,30 @@ fun CartScreen(
             onRetry = {},
         )
 
-        is CartState.Content -> {}
+        is CartState.Content -> {
+            CartScreenContent(
+                pizzas = state.pizzas,
+                navController = navController,
+                modifier = modifier
+            )
+        }
     }
 }
 
 @Composable
 fun CartScreenContent(
     pizzas: List<OrderedPizza>,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
             .background(color = Color.White)
     ) {
-        ScreenHead(stringResource(R.string.cart_screen_title))
+        ScreenHead(
+            navController = navController,
+            name = stringResource(R.string.cart_screen_title)
+        )
 
         LazyColumn(
             contentPadding = PaddingValues(
@@ -65,6 +78,14 @@ fun CartScreenContent(
                 CartPizzaItem(
                     pizza = it
                 )
+            }
+
+            item {
+                OrangeButton(
+                    text = stringResource(com.example.pizzashift.feature.cart.R.string.place_an_order)
+                ) {
+                    navController.navigate("checkout")
+                }
             }
         }
     }
