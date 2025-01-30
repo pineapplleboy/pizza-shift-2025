@@ -4,6 +4,8 @@ import com.example.pizzashift.shared.data.entity.OrderedPizzaEntity
 import com.example.pizzashift.shared.data.entity.OrderedPizzaIngredientEntity
 import com.example.pizzashift.shared.data.entity.PizzaDoughEntity
 import com.example.pizzashift.shared.data.entity.PizzaSizeEntity
+import com.example.pizzashift.shared.data.model.OrderedPizzaDTO
+import com.example.pizzashift.shared.data.model.OrderedPizzaIngredientDTO
 import com.example.pizzashift.shared.data.model.OrderedPizzaWithDetails
 import com.example.pizzashift.shared.domain.model.DoughType
 import com.example.pizzashift.shared.domain.model.IngredientType
@@ -66,5 +68,21 @@ fun OrderedPizza.toEntityModel(): OrderedPizzaWithDetails {
                 pizzaId = orderId
             )
         }
+    )
+}
+
+fun OrderedPizza.toDTO(): OrderedPizzaDTO {
+
+    return OrderedPizzaDTO(
+        id = this.id,
+        name = this.name,
+        toppings = this.toppings.map {
+            OrderedPizzaIngredientDTO(
+                name = it.name,
+                cost = it.cost
+            )
+        },
+        size = this.size.toDTO(),
+        doughs = this.doughs.toDTO()
     )
 }

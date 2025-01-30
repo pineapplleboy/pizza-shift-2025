@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.pizzashift.component.ErrorComponent
 import com.example.pizzashift.component.LoadingComponent
+import com.example.pizzashift.component.OrangeButton
 import com.example.pizzashift.component.ScreenHead
 import com.example.pizzashift.feature.cart.presentation.CartState
 import com.example.pizzashift.feature.cart.presentation.CartViewModel
@@ -77,6 +78,14 @@ fun CartScreenContent(
                 CartPizzaItem(
                     pizza = it
                 )
+            }
+
+            item {
+                OrangeButton(
+                    text = stringResource(com.example.pizzashift.feature.cart.R.string.place_an_order)
+                ) {
+                    navController.navigate("checkout")
+                }
             }
         }
     }

@@ -9,6 +9,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.pizzashift.feature.cart.presentation.CartViewModel
 import com.example.pizzashift.feature.cart.ui.CartScreen
+import com.example.pizzashift.feature.checkout.presentation.CheckoutViewModel
+import com.example.pizzashift.feature.checkout.ui.CheckoutScreen
 import com.example.pizzashift.feature.pizza_catalog.ui.PizzaCatalogScreen
 import com.example.pizzashift.feature.pizza_details.ui.PizzaDetailsScreen
 import com.example.pizzashift.feature.pizza_catalog.presentation.PizzaCatalogViewModel
@@ -50,6 +52,14 @@ fun MainNavHost(
         composable(NavRoutes.Cart.route) {
             val viewModel = koinViewModel<CartViewModel>()
             CartScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+
+        composable(NavRoutes.Checkout.route) {
+            val viewModel = koinViewModel<CheckoutViewModel>()
+            CheckoutScreen(
                 navController = navController,
                 viewModel = viewModel
             )

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_data_hint">Ваши данные</string>
+    <string name="second_name_hint">Фамилия</string>
+    <string name="first_name_hint">Имя</string>
+    <string name="phone_number_hint">Номер телефона</string>
+    <string name="email_hint">Email</string>
+    <string name="city_hint">Город</string>
+    <string name="continue_checkout">Продолжить</string>
+</resources>
