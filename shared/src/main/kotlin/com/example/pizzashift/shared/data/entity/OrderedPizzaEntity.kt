@@ -11,7 +11,5 @@ data class OrderedPizzaEntity(
     @PrimaryKey val orderId: String,
     val id: String,
     val name: String,
-    val sizeId: String,
-    val doughId: String,
     val img: String
 )

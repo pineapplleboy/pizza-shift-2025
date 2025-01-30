@@ -20,9 +20,9 @@ interface PizzaDao {
 
     @Transaction
     suspend fun insertOrderedPizzas(pizza: OrderedPizzaWithDetails) {
+        insertPizza(pizza.pizza)
         insertSize(pizza.size)
         insertDough(pizza.dough)
-        insertPizza(pizza.pizza)
         insertToppings(pizza.toppings)
     }
 

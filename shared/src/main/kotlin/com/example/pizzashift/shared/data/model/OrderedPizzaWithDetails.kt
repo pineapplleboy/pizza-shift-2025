@@ -11,19 +11,19 @@ data class OrderedPizzaWithDetails(
     @Embedded val pizza: OrderedPizzaEntity,
 
     @Relation(
-        parentColumn = "sizeId",
-        entityColumn = "id"
+        parentColumn = "orderId",
+        entityColumn = "orderId"
     )
     val size: PizzaSizeEntity,
 
     @Relation(
-        parentColumn = "doughId",
-        entityColumn = "id"
+        parentColumn = "orderId",
+        entityColumn = "orderId"
     )
     val dough: PizzaDoughEntity,
 
     @Relation(
-        parentColumn = "id",
+        parentColumn = "orderId",
         entityColumn = "pizzaId"
     )
     val toppings: List<OrderedPizzaIngredientEntity>

@@ -16,7 +16,8 @@ import androidx.room.PrimaryKey
     ]
 )
 class PizzaSizeEntity(
-    @PrimaryKey val id: String,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
-    val price: Double
+    val price: Double,
+    val orderId: String
 )

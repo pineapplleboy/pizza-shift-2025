@@ -39,8 +39,6 @@ fun OrderedPizzaWithDetails.toDomainModel(): OrderedPizza {
 
 fun OrderedPizza.toEntityModel(): OrderedPizzaWithDetails {
 
-    val sizeId = UUID.randomUUID().toString()
-    val doughId = UUID.randomUUID().toString()
     val orderId = UUID.randomUUID().toString()
 
     return OrderedPizzaWithDetails(
@@ -48,19 +46,17 @@ fun OrderedPizza.toEntityModel(): OrderedPizzaWithDetails {
             orderId = orderId,
             id = this.id,
             name = this.name,
-            sizeId = sizeId,
-            doughId = doughId,
             img = this.img
         ),
         size = PizzaSizeEntity(
-            id = sizeId,
             name = this.size.name.name,
-            price = this.size.price
+            price = this.size.price,
+            orderId = orderId
         ),
         dough = PizzaDoughEntity(
-            id = doughId,
             name = this.doughs.name.name,
-            price = this.doughs.price
+            price = this.doughs.price,
+            orderId = orderId
         ),
         toppings = this.toppings.map {
 
