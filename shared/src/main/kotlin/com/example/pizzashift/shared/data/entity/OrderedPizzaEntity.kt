@@ -5,21 +5,7 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "ordered_pizzas",
-    foreignKeys = [
-        ForeignKey(
-            entity = PizzaSizeEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["sizeId"],
-            onDelete = ForeignKey.CASCADE
-        ),
-        ForeignKey(
-            entity = PizzaDoughEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["doughId"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ]
+    tableName = "ordered_pizzas"
 )
 data class OrderedPizzaEntity(
     @PrimaryKey val orderId: String,

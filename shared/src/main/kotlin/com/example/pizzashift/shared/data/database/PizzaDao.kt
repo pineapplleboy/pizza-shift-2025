@@ -57,4 +57,7 @@ interface PizzaDao {
         deleteAllPizzaSizes()
         deleteAllPizzaDoughs()
     }
+
+    @Query("DELETE FROM ordered_pizzas WHERE orderId = :orderId")
+    fun deletePizzaById(orderId: String)
 }
