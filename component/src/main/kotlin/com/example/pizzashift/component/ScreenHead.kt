@@ -17,15 +17,17 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.pizzashift.shared.R
 
 @Composable
 fun ScreenHead(
     name: String,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(
                 vertical = 12.dp,
@@ -35,7 +37,9 @@ fun ScreenHead(
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(
-            onClick = { }
+            onClick = {
+                navController.popBackStack()
+            }
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_left),

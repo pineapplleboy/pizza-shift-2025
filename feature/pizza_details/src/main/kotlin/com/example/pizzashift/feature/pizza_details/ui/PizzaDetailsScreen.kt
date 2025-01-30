@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.pizzashift.shared.R
@@ -43,6 +44,7 @@ import com.example.pizzashift.shared.domain.model.PizzaIngredient
 @Composable
 fun PizzaDetailsScreen(
     viewModel: PizzaDetailsViewModel,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     val pizzaState by viewModel.state.collectAsState()
@@ -60,6 +62,7 @@ fun PizzaDetailsScreen(
         is PizzaDetailsState.Content -> PizzaDetailsContent(
             pizza = state.pizza,
             viewModel = viewModel,
+            navController = navController,
             modifier = modifier
         )
     }
@@ -70,6 +73,7 @@ fun PizzaDetailsScreen(
 fun PizzaDetailsContent(
     pizza: Pizza,
     viewModel: PizzaDetailsViewModel,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     val size = remember { mutableStateOf(pizza.sizes[0]) }
@@ -86,7 +90,10 @@ fun PizzaDetailsContent(
             span = { GridItemSpan(3) }
         ) {
             Column {
-                ScreenHead(stringResource(R.string.pizza_screen_title))
+                ScreenHead(
+                    navController = navController,
+                    name = stringResource(R.string.pizza_screen_title)
+                )
                 Spacer(modifier = Modifier.height(24.dp))
             }
         }

@@ -41,12 +41,18 @@ fun MainNavHost(
         ) {
             val pizzaId = it.arguments?.getString("pizza")
             val viewModel = koinViewModel<PizzaDetailsViewModel>(parameters = { parametersOf(pizzaId) })
-            PizzaDetailsScreen(viewModel = viewModel)
+            PizzaDetailsScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
         }
 
         composable(NavRoutes.Cart.route) {
             val viewModel = koinViewModel<CartViewModel>()
-            CartScreen(viewModel = viewModel)
+            CartScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
         }
     }
 }
