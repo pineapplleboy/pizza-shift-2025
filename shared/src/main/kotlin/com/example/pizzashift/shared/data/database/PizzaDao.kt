@@ -1,5 +1,6 @@
-package com.example.pizzashift.shared.data.dao
+package com.example.pizzashift.shared.data.database
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -10,29 +11,30 @@ import com.example.pizzashift.shared.data.entity.PizzaDoughEntity
 import com.example.pizzashift.shared.data.entity.PizzaSizeEntity
 import com.example.pizzashift.shared.data.model.OrderedPizzaWithDetails
 
+@Dao
 interface PizzaDao {
 
     @Transaction
     @Query("SELECT * FROM ordered_pizzas")
-    fun getOrderedPizzas(): List<OrderedPizzaWithDetails>
+    suspend fun getOrderedPizzas(): List<OrderedPizzaWithDetails>
 
     @Transaction
-    fun insertOrderedPizzas(pizza: OrderedPizzaWithDetails) {
-        insertPizza(pizza.pizza)
+    suspend fun insertOrderedPizzas(pizza: OrderedPizzaWithDetails) {
         insertSize(pizza.size)
         insertDough(pizza.dough)
+        insertPizza(pizza.pizza)
         insertToppings(pizza.toppings)
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPizza(pizza: OrderedPizzaEntity)
+    suspend fun insertPizza(pizza: OrderedPizzaEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertSize(size: PizzaSizeEntity)
+    suspend fun insertSize(size: PizzaSizeEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertDough(dough: PizzaDoughEntity)
+    suspend fun insertDough(dough: PizzaDoughEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertToppings(toppings: List<OrderedPizzaIngredientEntity>)
+    suspend fun insertToppings(toppings: List<OrderedPizzaIngredientEntity>)
 }

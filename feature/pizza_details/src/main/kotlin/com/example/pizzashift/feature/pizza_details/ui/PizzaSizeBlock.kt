@@ -9,11 +9,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.example.pizzashift.shared.R
+import com.example.pizzashift.shared.domain.model.PizzaSize
 import com.example.pizzashift.shared.domain.model.SizeType
 
 @Composable
 fun PizzaSizeBlock(
-    modifier: Modifier = Modifier
+    currentSize: PizzaSize,
+    modifier: Modifier = Modifier,
+    onSizeChanged: (SizeType) -> Unit
 ) {
     Row(
         modifier = modifier
@@ -25,16 +28,26 @@ fun PizzaSizeBlock(
     ) {
         PizzaSizeButton(
             size = SizeType.SMALL,
-            isActive = true,
+            isActive = SizeType.SMALL == currentSize.name,
             modifier = Modifier.weight(1f)
-        )
+        ) {
+            onSizeChanged(SizeType.SMALL)
+        }
+
         PizzaSizeButton(
             size = SizeType.MEDIUM,
+            isActive = SizeType.MEDIUM == currentSize.name,
             modifier = Modifier.weight(1f)
-        )
+        ) {
+            onSizeChanged(SizeType.MEDIUM)
+        }
+
         PizzaSizeButton(
             size = SizeType.LARGE,
+            isActive = SizeType.LARGE == currentSize.name,
             modifier = Modifier.weight(1f)
-        )
+        ) {
+            onSizeChanged(SizeType.LARGE)
+        }
     }
 }

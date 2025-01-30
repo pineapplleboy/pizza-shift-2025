@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
     kotlin("plugin.serialization") version "2.1.10"
 }
 
@@ -59,4 +60,6 @@ dependencies {
 
     implementation(project(":shared"))
     implementation(project(":component"))
+
+    kapt(libs.androidx.room.compiler)
 }
