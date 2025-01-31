@@ -1,6 +1,7 @@
 package com.example.pizzashift
 
 import android.app.Application
+import com.example.pizzashift.feature.authorization.di.authorizationModule
 import com.example.pizzashift.feature.cart.di.cartModule
 import com.example.pizzashift.feature.checkout.di.checkoutModule
 import com.example.pizzashift.shared.di.dataModule
@@ -27,7 +28,8 @@ class App: Application() {
                     pizzaDetailsModule,
                     pizzaCatalogModule,
                     cartModule,
-                    checkoutModule
+                    checkoutModule,
+                    authorizationModule
                 )
             )
         }

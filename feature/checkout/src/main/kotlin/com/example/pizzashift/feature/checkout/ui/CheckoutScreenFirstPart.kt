@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.pizzashift.component.OrangeButton
 import com.example.pizzashift.component.Header
+import com.example.pizzashift.component.UserInfoField
 import com.example.pizzashift.feature.checkout.R
 import com.example.pizzashift.shared.domain.model.PaymentAddress
 import com.example.pizzashift.shared.domain.model.PaymentPerson

@@ -11,9 +11,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.pizzashift.navigation.BottomNavigationBarItems
 import com.example.pizzashift.navigation.MainNavHost
+import com.example.pizzashift.navigation.NavRoutes
 
 class MainActivity : ComponentActivity() {
 
@@ -28,11 +30,14 @@ class MainActivity : ComponentActivity() {
                 )
             ) {
                 val navController = rememberNavController()
+                val currentBackStackEntry = navController.currentBackStackEntryAsState()
 
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = {
-                        BottomNavigationBarItems(navController)
+                        if (shouldShowBottomBar(currentBackStackEntry.value?.destination?.route)) {
+                            BottomNavigationBarItems(navController)
+                        }
                     }
                 ) { innerPadding ->
 
@@ -43,5 +48,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private fun shouldShowBottomBar(route: String?): Boolean {
+        val hiddenBottomBarRoutes = listOf(NavRoutes.Checkout.route, NavRoutes.Authorization.route)
+        return route !in hiddenBottomBarRoutes
     }
 }

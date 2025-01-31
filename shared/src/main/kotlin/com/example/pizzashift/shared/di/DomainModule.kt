@@ -4,6 +4,8 @@ import com.example.pizzashift.shared.domain.usecase.CountPizzaPriceUseCase
 import com.example.pizzashift.shared.domain.usecase.GetCartUseCase
 import com.example.pizzashift.shared.domain.usecase.GetPizzaCatalogUseCase
 import com.example.pizzashift.shared.domain.usecase.MakePizzaDescriptionUseCase
+import com.example.pizzashift.shared.domain.usecase.RequestCodeUseCase
+import com.example.pizzashift.shared.domain.usecase.SignInUseCase
 import org.koin.dsl.module
 
 val domainModule =  module {
@@ -17,5 +19,13 @@ val domainModule =  module {
 
     factory<CountPizzaPriceUseCase> {
         CountPizzaPriceUseCase()
+    }
+
+    factory<SignInUseCase> {
+        SignInUseCase(get())
+    }
+
+    factory<RequestCodeUseCase> {
+        RequestCodeUseCase(get())
     }
 }

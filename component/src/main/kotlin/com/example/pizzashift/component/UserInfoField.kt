@@ -1,4 +1,4 @@
-package com.example.pizzashift.feature.checkout.ui
+package com.example.pizzashift.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun UserInfoField(
-    name: String,
+    name: String? = null,
     value: String,
     modifier: Modifier = Modifier,
     onValueChange: (String) -> Unit
@@ -28,11 +28,13 @@ fun UserInfoField(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(6.dp)
     ) {
-        Text(
-            text = name,
-            fontFamily = FontFamily(Font(com.example.pizzashift.shared.R.font.montserrat_font_family)),
-            fontSize = 14.sp
-        )
+        if(name != null) {
+            Text(
+                text = name,
+                fontFamily = FontFamily(Font(com.example.pizzashift.shared.R.font.montserrat_font_family)),
+                fontSize = 14.sp
+            )
+        }
 
         TextField(
             value = value,
