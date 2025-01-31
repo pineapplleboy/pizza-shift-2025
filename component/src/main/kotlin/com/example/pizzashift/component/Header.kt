@@ -21,7 +21,7 @@ import androidx.navigation.NavController
 import com.example.pizzashift.shared.R
 
 @Composable
-fun ScreenHead(
+fun Header(
     name: String,
     navController: NavController? = null,
     onBack: () -> Unit = {},
@@ -30,10 +30,7 @@ fun ScreenHead(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(
-                vertical = 12.dp,
-                horizontal = 16.dp
-            ),
+            .padding(vertical = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(32.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -45,7 +42,8 @@ fun ScreenHead(
                 else {
                     onBack()
                 }
-            }
+            },
+            modifier = Modifier.size(24.dp)
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_left),

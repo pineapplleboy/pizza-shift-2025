@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -17,7 +18,7 @@ import androidx.navigation.NavController
 import com.example.pizzashift.component.ErrorComponent
 import com.example.pizzashift.component.LoadingComponent
 import com.example.pizzashift.component.OrangeButton
-import com.example.pizzashift.component.ScreenHead
+import com.example.pizzashift.component.Header
 import com.example.pizzashift.feature.cart.presentation.CartState
 import com.example.pizzashift.feature.cart.presentation.CartViewModel
 import com.example.pizzashift.shared.R
@@ -60,17 +61,16 @@ fun CartScreenContent(
     Column(
         modifier = modifier
             .background(color = Color.White)
+            .padding(horizontal = 16.dp)
     ) {
-        ScreenHead(
+        Header(
             navController = navController,
             name = stringResource(R.string.cart_screen_title)
         )
 
         LazyColumn(
             contentPadding = PaddingValues(
-                top = 24.dp,
-                start = 16.dp,
-                end = 16.dp
+                top = 24.dp
             ),
             verticalArrangement = Arrangement.spacedBy(48.dp)
         ) {

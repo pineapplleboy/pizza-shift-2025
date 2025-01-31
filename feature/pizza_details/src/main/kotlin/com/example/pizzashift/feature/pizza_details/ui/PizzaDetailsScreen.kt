@@ -1,20 +1,16 @@
 package com.example.pizzashift.feature.pizza_details.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -22,8 +18,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -37,7 +31,7 @@ import com.example.pizzashift.shared.R
 import com.example.pizzashift.component.ErrorComponent
 import com.example.pizzashift.component.LoadingComponent
 import com.example.pizzashift.component.OrangeButton
-import com.example.pizzashift.component.ScreenHead
+import com.example.pizzashift.component.Header
 import com.example.pizzashift.feature.pizza_details.presentation.PizzaDetailsState
 import com.example.pizzashift.feature.pizza_details.presentation.PizzaDetailsViewModel
 import com.example.pizzashift.shared.domain.model.Pizza
@@ -92,7 +86,7 @@ fun PizzaDetailsContent(
             span = { GridItemSpan(3) }
         ) {
             Column {
-                ScreenHead(
+                Header(
                     navController = navController,
                     name = stringResource(R.string.pizza_screen_title)
                 )

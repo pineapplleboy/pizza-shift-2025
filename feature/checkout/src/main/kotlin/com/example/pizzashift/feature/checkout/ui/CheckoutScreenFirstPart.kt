@@ -11,7 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.pizzashift.component.OrangeButton
-import com.example.pizzashift.component.ScreenHead
+import com.example.pizzashift.component.Header
 import com.example.pizzashift.feature.checkout.R
 import com.example.pizzashift.shared.domain.model.PaymentAddress
 import com.example.pizzashift.shared.domain.model.PaymentPerson
@@ -40,16 +40,15 @@ fun CheckoutScreenFirstPart(
     }
 
     Column(
-        modifier = modifier,
+        modifier = modifier.padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
-        ScreenHead(
+        Header(
             name = stringResource(R.string.user_data_hint),
             navController = navController
         )
 
         Column(
-            modifier = modifier.padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             UserInfoField(

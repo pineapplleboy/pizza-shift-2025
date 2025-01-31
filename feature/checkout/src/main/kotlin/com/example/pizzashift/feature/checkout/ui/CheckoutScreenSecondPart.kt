@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.pizzashift.component.OrangeButton
-import com.example.pizzashift.component.ScreenHead
+import com.example.pizzashift.component.Header
 import com.example.pizzashift.feature.checkout.R
 import com.example.pizzashift.shared.domain.model.PaymentDebitCard
 
@@ -29,7 +29,7 @@ fun CheckoutScreenSecondPart(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
-        ScreenHead(
+        Header(
             name = stringResource(R.string.checkout_second_screen),
             onBack = onBack
         )
