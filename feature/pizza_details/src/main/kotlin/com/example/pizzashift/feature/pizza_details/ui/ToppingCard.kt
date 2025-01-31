@@ -18,12 +18,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.pizzashift.shared.R
 import com.example.pizzashift.shared.domain.model.PizzaIngredient
+import com.example.pizzashift.shared.domain.model.getLocalizedName
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -60,16 +62,20 @@ fun ToppingCard(
             modifier = Modifier.padding(8.dp)
         ) {
             Text(
-                text = topping.name.name,
+                text = stringResource(topping.name.getLocalizedName()),
                 fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
-                fontSize = 12.sp
+                fontSize = 12.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
 
             Text(
                 text = stringResource(R.string.cost, topping.cost.toString()),
                 fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
                 fontWeight = FontWeight.Bold,
-                fontSize = 14.sp
+                fontSize = 14.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
         }
     }

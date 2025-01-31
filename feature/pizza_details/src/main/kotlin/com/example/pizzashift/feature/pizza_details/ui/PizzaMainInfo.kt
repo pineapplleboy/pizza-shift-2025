@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -13,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pizzashift.shared.R
 import com.example.pizzashift.shared.domain.model.Pizza
+import com.example.pizzashift.shared.domain.model.getLocalizedName
 
 @Composable
 fun PizzaMainInfo(
@@ -24,6 +26,8 @@ fun PizzaMainInfo(
             .fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
+        val ingredients = pizza.ingredients.map { stringResource(it.name.getLocalizedName()).lowercase() }
+
         Text(
             text = pizza.name,
             fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
@@ -36,7 +40,7 @@ fun PizzaMainInfo(
             fontSize = 14.sp
         )
         Text(
-            text = pizza.ingredients.joinToString(separator = ", ") { it.name.name.lowercase() }
+            text = ingredients.joinToString(separator = ", ") { it.lowercase() }
                 .replaceFirstChar { it.uppercase() },
             fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
             fontSize = 16.sp

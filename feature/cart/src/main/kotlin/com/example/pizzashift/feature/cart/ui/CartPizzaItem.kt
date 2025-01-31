@@ -19,6 +19,7 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.pizzashift.shared.R
 import com.example.pizzashift.shared.domain.model.OrderedPizza
+import com.example.pizzashift.shared.domain.model.getLocalizedName
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -26,11 +27,13 @@ fun CartPizzaItem(
     pizza: OrderedPizza,
     modifier: Modifier = Modifier
 ) {
+    val toppings = pizza.toppings.map { stringResource(it.name.getLocalizedName()) }
+
     Row(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 5.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         GlideImage(
             model = pizza.img,
@@ -40,7 +43,8 @@ fun CartPizzaItem(
         )
 
         Column(
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(
                 text = pizza.name,
@@ -54,7 +58,7 @@ fun CartPizzaItem(
                     com.example.pizzashift.feature.cart.R.string.cart_pizza_info,
                     pizza.size.name,
                     pizza.doughs.name,
-                    pizza.toppings.joinToString(separator = ", ") { it.name.name.lowercase() }),
+                    toppings.joinToString(separator = ", ") { it.lowercase() }),
                 fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
                 fontSize = 12.sp
             )
