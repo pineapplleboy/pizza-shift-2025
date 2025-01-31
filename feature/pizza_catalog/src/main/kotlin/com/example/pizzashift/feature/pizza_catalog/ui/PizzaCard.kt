@@ -33,7 +33,6 @@ fun PizzaCard(
                 color = colorResource(R.color.ghost_white),
                 shape = RoundedCornerShape(16.dp)
             )
-            .padding(16.dp)
             .clickable {
                 onClick(pizza.id)
             }
@@ -44,10 +43,18 @@ fun PizzaCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(150.dp)
+                .padding(top = 16.dp)
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        PizzaInfo(pizza = pizza)
+        PizzaInfo(
+            pizza = pizza,
+            modifier = Modifier.padding(
+                bottom = 16.dp,
+                start = 16.dp,
+                end = 16.dp
+            )
+        )
     }
 }

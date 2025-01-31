@@ -41,7 +41,6 @@ fun ToppingCard(
                 color = if(isSelected) colorResource(R.color.light_green) else colorResource(R.color.ghost_white),
                 shape = RoundedCornerShape(16.dp)
             )
-            .padding(8.dp)
             .clickable {
                 onClick(topping)
             },
@@ -53,10 +52,12 @@ fun ToppingCard(
             modifier = Modifier
                 .height(88.dp)
                 .align(Alignment.CenterHorizontally)
+                .padding(top = 8.dp)
         )
 
         Column(
-            verticalArrangement = Arrangement.spacedBy(4.dp)
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier.padding(8.dp)
         ) {
             Text(
                 text = topping.name.name,

@@ -76,7 +76,7 @@ fun PizzaCatalogContent(
         modifier = modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp),
-        contentPadding = PaddingValues(top = 16.dp),
+        contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(pizzas) { pizza ->
