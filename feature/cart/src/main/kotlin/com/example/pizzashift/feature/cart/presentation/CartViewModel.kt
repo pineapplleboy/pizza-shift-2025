@@ -2,7 +2,7 @@ package com.example.pizzashift.feature.cart.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pizzashift.feature.cart.domain.usecase.GetCartUseCase
+import com.example.pizzashift.shared.domain.usecase.GetCartUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

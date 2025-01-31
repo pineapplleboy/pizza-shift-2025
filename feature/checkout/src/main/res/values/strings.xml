@@ -7,4 +7,14 @@
     <string name="email_hint">Email</string>
     <string name="city_hint">Город</string>
     <string name="continue_checkout">Продолжить</string>
+    <string name="card_pan_hint">Номер</string>
+    <string name="card_cvv_hint">CVV</string>
+    <string name="card_date_hint">Срок</string>
+    <string name="checkout_second_screen">Карта оплаты</string>
+    <string name="pay_for_pizza_hint">Оплатить</string>
+    <string name="close_button_description">Закрыть</string>
+    <string name="successfull_order">Оплата прошла успешно!</string>
+    <string name="order">Заказ</string>
+    <string name="address">Адрес доставки</string>
+    <string name="final_price">Сумма заказа</string>
 </resources>

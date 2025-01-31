@@ -23,7 +23,8 @@ import com.example.pizzashift.shared.R
 @Composable
 fun ScreenHead(
     name: String,
-    navController: NavController,
+    navController: NavController? = null,
+    onBack: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -38,7 +39,12 @@ fun ScreenHead(
     ) {
         IconButton(
             onClick = {
-                navController.popBackStack()
+                if(navController != null) {
+                    navController.popBackStack()
+                }
+                else {
+                    onBack()
+                }
             }
         ) {
             Icon(

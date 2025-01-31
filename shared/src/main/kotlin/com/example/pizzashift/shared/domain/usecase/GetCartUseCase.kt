@@ -1,4 +1,4 @@
-package com.example.pizzashift.feature.cart.domain.usecase
+package com.example.pizzashift.shared.domain.usecase
 
 import com.example.pizzashift.shared.domain.repository.CartRepository
 
