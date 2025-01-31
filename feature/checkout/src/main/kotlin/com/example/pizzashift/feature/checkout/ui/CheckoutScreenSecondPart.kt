@@ -26,7 +26,8 @@ fun CheckoutScreenSecondPart(
     val cvv = remember { mutableStateOf("") }
 
     Column(
-        modifier = modifier,
+        modifier = modifier
+            .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         Header(
@@ -35,8 +36,6 @@ fun CheckoutScreenSecondPart(
         )
 
         Column(
-            modifier = Modifier
-                .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             UserInfoField(
