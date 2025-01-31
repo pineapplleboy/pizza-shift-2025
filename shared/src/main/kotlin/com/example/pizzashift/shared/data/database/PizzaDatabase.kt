@@ -2,20 +2,17 @@ package com.example.pizzashift.shared.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.pizzashift.shared.data.converter.PizzaDatabaseConverter
 import com.example.pizzashift.shared.data.entity.OrderedPizzaEntity
-import com.example.pizzashift.shared.data.entity.OrderedPizzaIngredientEntity
-import com.example.pizzashift.shared.data.entity.PizzaDoughEntity
-import com.example.pizzashift.shared.data.entity.PizzaSizeEntity
 
 @Database(
     entities = [
-        OrderedPizzaEntity::class,
-        PizzaSizeEntity::class,
-        PizzaDoughEntity::class,
-        OrderedPizzaIngredientEntity::class
+        OrderedPizzaEntity::class
     ],
-    version = 3
+    version = 4
 )
+@TypeConverters(PizzaDatabaseConverter::class)
 abstract class PizzaDatabase : RoomDatabase() {
     abstract fun pizzaDao(): PizzaDao
 }
