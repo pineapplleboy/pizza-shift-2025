@@ -9,4 +9,22 @@
     <string name="pizza_size_large">Большая</string>
     <string name="cost">%1$s ₽</string>
     <string name="cart_screen_title">Корзина</string>
+    <string name="ingredient_pineapple">Ананас</string>
+    <string name="ingredient_mozzarella">Моцарелла</string>
+    <string name="ingredient_peperoni">Пепперони</string>
+    <string name="ingredient_green_pepper">Зелёный перец</string>
+    <string name="ingredient_mushrooms">Грибы</string>
+    <string name="ingredient_basil">Базилик</string>
+    <string name="ingredient_cheddar">Чеддер</string>
+    <string name="ingredient_parmesan">Пармезан</string>
+    <string name="ingredient_feta">Фета</string>
+    <string name="ingredient_ham">Ветчина</string>
+    <string name="ingredient_pickle">Огурец</string>
+    <string name="ingredient_tomato">Томат</string>
+    <string name="ingredient_bacon">Бекон</string>
+    <string name="ingredient_onion">Лук</string>
+    <string name="ingredient_chile">Чили</string>
+    <string name="ingredient_shrimps">Креветки</string>
+    <string name="ingredient_chicken_fillet">Куриное филе</string>
+    <string name="ingredient_meatballs">Фрикадельки</string>
 </resources>

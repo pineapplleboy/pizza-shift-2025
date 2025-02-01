@@ -21,25 +21,29 @@ import androidx.navigation.NavController
 import com.example.pizzashift.shared.R
 
 @Composable
-fun ScreenHead(
+fun Header(
     name: String,
-    navController: NavController,
+    navController: NavController? = null,
+    onBack: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(
-                vertical = 12.dp,
-                horizontal = 16.dp
-            ),
+            .padding(vertical = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(32.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(
             onClick = {
-                navController.popBackStack()
-            }
+                if(navController != null) {
+                    navController.popBackStack()
+                }
+                else {
+                    onBack()
+                }
+            },
+            modifier = Modifier.size(24.dp)
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_left),

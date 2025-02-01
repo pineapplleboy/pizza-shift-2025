@@ -7,4 +7,8 @@ interface CartRepository {
     suspend fun getCart(): List<OrderedPizza>
 
     suspend fun addPizza(pizza: OrderedPizza)
+
+    suspend fun clearCart()
+
+    suspend fun deletePizza(pizza: OrderedPizza)
 }

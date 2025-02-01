@@ -1,63 +1,46 @@
 package com.example.pizzashift.shared.data.database
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.example.pizzashift.shared.data.entity.OrderedPizzaEntity
-import com.example.pizzashift.shared.data.entity.OrderedPizzaIngredientEntity
-import com.example.pizzashift.shared.data.entity.PizzaDoughEntity
-import com.example.pizzashift.shared.data.entity.PizzaSizeEntity
-import com.example.pizzashift.shared.data.model.OrderedPizzaWithDetails
+import com.example.pizzashift.shared.domain.model.OrderedPizzaIngredient
+import com.example.pizzashift.shared.domain.model.PizzaDough
+import com.example.pizzashift.shared.domain.model.PizzaSize
 
 @Dao
 interface PizzaDao {
 
     @Transaction
     @Query("SELECT * FROM ordered_pizzas")
-    suspend fun getOrderedPizzas(): List<OrderedPizzaWithDetails>
-
-    @Transaction
-    suspend fun insertOrderedPizzas(pizza: OrderedPizzaWithDetails) {
-        insertPizza(pizza.pizza)
-        insertSize(pizza.size)
-        insertDough(pizza.dough)
-        insertToppings(pizza.toppings)
-    }
+    suspend fun getOrderedPizzas(): List<OrderedPizzaEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPizza(pizza: OrderedPizzaEntity)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSize(size: PizzaSizeEntity)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertDough(dough: PizzaDoughEntity)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertToppings(toppings: List<OrderedPizzaIngredientEntity>)
-
+    suspend fun insertOrderedPizzas(pizza: OrderedPizzaEntity)
 
     @Query("DELETE FROM ordered_pizzas")
-    fun deleteAllOrderedPizzas()
+    suspend fun deleteOrderedPizzas()
 
-    @Query("DELETE FROM pizza_sizes")
-    fun deleteAllPizzaSizes()
-
-    @Query("DELETE FROM pizza_doughs")
-    fun deleteAllPizzaDoughs()
-
-    @Query("DELETE FROM ordered_pizza_ingredients")
-    fun deleteAllPizzaIngredients()
-
-    @Transaction
-    suspend fun clearDatabase() {
-        deleteAllOrderedPizzas()
-        deleteAllPizzaSizes()
-        deleteAllPizzaDoughs()
-    }
-
-    @Query("DELETE FROM ordered_pizzas WHERE orderId = :orderId")
-    fun deletePizzaById(orderId: String)
+    @Query(
+        """
+    DELETE FROM ordered_pizzas 
+    WHERE id = :id 
+    AND name = :name 
+    AND img = :img 
+    AND ingredients = :ingredients 
+    AND size = :size 
+    AND doughs = :doughs
+"""
+    )
+    suspend fun deletePizza(
+        id: String,
+        name: String,
+        img: String,
+        ingredients: List<OrderedPizzaIngredient>,
+        size: PizzaSize,
+        doughs: PizzaDough
+    )
 }

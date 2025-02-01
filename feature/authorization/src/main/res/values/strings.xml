@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="authorization_header">Авторизация</string>
+    <string name="insert_phone_hint">Введите номер телефона для входа в кабинет</string>
+    <string name="continue_authorization">Продолжить</string>
+    <string name="insert_code_hint">Введите проверочный код для входа \nв личный кабинет</string>
+</resources>

@@ -13,8 +13,10 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/component" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/authorization" />
             <option value="$PROJECT_DIR$/feature/cart" />
             <option value="$PROJECT_DIR$/feature/checkout" />
+            <option value="$PROJECT_DIR$/feature/orders" />
             <option value="$PROJECT_DIR$/feature/pizza_catalog" />
             <option value="$PROJECT_DIR$/feature/pizza_details" />
             <option value="$PROJECT_DIR$/shared" />

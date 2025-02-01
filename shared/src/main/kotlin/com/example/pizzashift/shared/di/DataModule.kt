@@ -6,8 +6,10 @@ import com.example.pizzashift.shared.data.database.PizzaDatabase
 import com.example.pizzashift.shared.data.network.PizzaApi
 import com.example.pizzashift.shared.data.repository.CartRepositoryImpl
 import com.example.pizzashift.shared.data.repository.PizzaRepositoryImpl
+import com.example.pizzashift.shared.data.repository.ProfileRepositoryImpl
 import com.example.pizzashift.shared.domain.repository.CartRepository
 import com.example.pizzashift.shared.domain.repository.PizzaRepository
+import com.example.pizzashift.shared.domain.repository.ProfileRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -51,5 +53,9 @@ val dataModule = module {
 
     factory<CartRepository>{
         CartRepositoryImpl(get())
+    }
+
+    factory<ProfileRepository> {
+        ProfileRepositoryImpl(get())
     }
 }

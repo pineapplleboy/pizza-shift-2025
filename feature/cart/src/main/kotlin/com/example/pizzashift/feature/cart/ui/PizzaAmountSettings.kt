@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pizzashift.shared.R
@@ -30,17 +31,23 @@ fun PizzaAmountSettings(
     ) {
         Text(
             text = "-",
-            fontSize = 12.sp
+            fontSize = 12.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.weight(1f)
         )
 
         Text(
             text = "1",
-            fontSize = 12.sp
+            fontSize = 12.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.weight(1f)
         )
 
         Text(
             text = "+",
-            fontSize = 12.sp
+            fontSize = 12.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.weight(1f)
         )
     }
 }

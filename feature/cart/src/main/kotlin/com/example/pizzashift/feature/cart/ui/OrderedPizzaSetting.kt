@@ -1,7 +1,9 @@
 package com.example.pizzashift.feature.cart.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -20,35 +22,36 @@ import com.example.pizzashift.shared.domain.model.OrderedPizza
 @Composable
 fun OrderedPizzaSetting(
     pizza: OrderedPizza,
+    onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(32.dp),
-        verticalAlignment = Alignment.CenterVertically
+    Column(
+        modifier = modifier
     ) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
         ) {
-            PizzaAmountSettings()
-
             TextButton(
-                onClick = { /*TODO*/ }
+                onClick = onDelete,
+                modifier = Modifier.weight(1f)
             ) {
                 Text(
                     text = stringResource(com.example.pizzashift.feature.cart.R.string.change_ordered_pizza_button),
                     color = Color.Black
                 )
             }
+
+            PizzaAmountSettings(modifier = Modifier.fillMaxWidth().weight(1f))
         }
 
         Text(
             text = stringResource(R.string.cost, pizza.size.price + pizza.toppings.sumOf { it.cost } + pizza.doughs.price),
             fontSize = 16.sp,
             fontFamily = FontFamily(Font(R.font.montserrat_font_family)),
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.align(Alignment.End)
         )
     }
 }

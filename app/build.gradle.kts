@@ -72,7 +72,9 @@ dependencies {
     implementation(project(":feature:pizza_catalog"))
     implementation(project(":feature:pizza_details"))
     implementation(project(":feature:checkout"))
+    implementation(project(":feature:orders"))
     implementation(project(":feature:cart"))
     implementation(project(":shared"))
     implementation(project(":component"))
+    implementation(project(":feature:authorization"))
 }
