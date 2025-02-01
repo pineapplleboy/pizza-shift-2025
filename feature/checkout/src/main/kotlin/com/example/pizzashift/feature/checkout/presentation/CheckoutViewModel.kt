@@ -10,6 +10,7 @@ import com.example.pizzashift.shared.domain.model.PaymentAddress
 import com.example.pizzashift.shared.domain.model.PaymentDebitCard
 import com.example.pizzashift.shared.domain.model.PaymentPerson
 import com.example.pizzashift.shared.domain.model.PizzaPayment
+import com.example.pizzashift.shared.domain.usecase.ClearCartUseCase
 import com.example.pizzashift.shared.domain.usecase.CountPizzaPriceUseCase
 import com.example.pizzashift.shared.domain.usecase.GetCartUseCase
 import com.example.pizzashift.shared.domain.usecase.MakePizzaDescriptionUseCase
@@ -25,7 +26,8 @@ class CheckoutViewModel(
     private val validateDebitCardUseCase: ValidateDebitCardUseCase,
     private val getCartUseCase: GetCartUseCase,
     private val countPizzaPriceUseCase: CountPizzaPriceUseCase,
-    private val makePizzaDescriptionUseCase: MakePizzaDescriptionUseCase
+    private val makePizzaDescriptionUseCase: MakePizzaDescriptionUseCase,
+    private val clearCartUseCase: ClearCartUseCase
 
 ) : ViewModel() {
 
@@ -93,6 +95,7 @@ class CheckoutViewModel(
                 _state.value = CheckoutState.Loading
 
                 orderPizza(payment)
+                clearCartUseCase()
             }
         }
     }

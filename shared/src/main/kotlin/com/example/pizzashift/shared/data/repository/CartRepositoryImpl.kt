@@ -17,4 +17,19 @@ class CartRepositoryImpl(
     override suspend fun addPizza(pizza: OrderedPizza) {
         pizzaDao.insertOrderedPizzas(pizza.toEntityModel())
     }
+
+    override suspend fun clearCart() {
+        pizzaDao.deleteOrderedPizzas()
+    }
+
+    override suspend fun deletePizza(pizza: OrderedPizza) {
+        pizzaDao.deletePizza(
+            id = pizza.id,
+            name = pizza.name,
+            img = pizza.img,
+            ingredients = pizza.toppings,
+            size = pizza.size,
+            doughs = pizza.doughs
+        )
+    }
 }

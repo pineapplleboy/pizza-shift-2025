@@ -25,6 +25,7 @@ import com.example.pizzashift.shared.domain.model.getLocalizedName
 @Composable
 fun CartPizzaItem(
     pizza: OrderedPizza,
+    onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val toppings = pizza.toppings.map { stringResource(it.name.getLocalizedName()) }
@@ -63,7 +64,10 @@ fun CartPizzaItem(
                 fontSize = 12.sp
             )
 
-            OrderedPizzaSetting(pizza)
+            OrderedPizzaSetting(
+                pizza = pizza,
+                onDelete = onDelete
+            )
         }
     }
 }

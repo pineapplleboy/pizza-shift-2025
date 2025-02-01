@@ -11,7 +11,7 @@ import org.koin.dsl.module
 
 val checkoutModule = module {
     viewModel<CheckoutViewModel> {
-        CheckoutViewModel(get(), get(), get(), get(), get(), get())
+        CheckoutViewModel(get(), get(), get(), get(), get(), get(), get())
     }
 
     factory<OrderPizzaUseCase> {

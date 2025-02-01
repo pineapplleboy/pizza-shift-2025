@@ -46,6 +46,9 @@ fun CartScreen(
             CartScreenContent(
                 pizzas = state.pizzas,
                 navController = navController,
+                onDelete = {
+                    viewModel.deletePizza(it)
+                },
                 modifier = modifier
             )
         }
@@ -55,6 +58,7 @@ fun CartScreen(
 @Composable
 fun CartScreenContent(
     pizzas: List<OrderedPizza>,
+    onDelete: (pizza: OrderedPizza) -> Unit,
     navController: NavController,
     modifier: Modifier = Modifier
 ) {
@@ -76,7 +80,10 @@ fun CartScreenContent(
         ) {
             items(pizzas) {
                 CartPizzaItem(
-                    pizza = it
+                    pizza = it,
+                    onDelete = {
+                        onDelete(it)
+                    }
                 )
             }
 

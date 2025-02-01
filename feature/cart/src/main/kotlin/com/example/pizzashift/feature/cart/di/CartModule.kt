@@ -7,7 +7,7 @@ import org.koin.dsl.module
 
 val cartModule = module {
     viewModel<CartViewModel> {
-            CartViewModel(get())
+            CartViewModel(get(), get())
     }
 
     factory<GetCartUseCase> {

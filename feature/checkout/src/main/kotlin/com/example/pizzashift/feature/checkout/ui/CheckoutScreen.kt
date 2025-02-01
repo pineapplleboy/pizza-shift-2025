@@ -1,6 +1,5 @@
 package com.example.pizzashift.feature.checkout.ui
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -12,10 +11,8 @@ import com.example.pizzashift.component.ErrorComponent
 import com.example.pizzashift.component.LoadingComponent
 import com.example.pizzashift.feature.checkout.presentation.CheckoutState
 import com.example.pizzashift.feature.checkout.presentation.CheckoutViewModel
-import com.example.pizzashift.shared.domain.model.OrderedPizza
 import com.example.pizzashift.shared.domain.model.PaymentAddress
 import com.example.pizzashift.shared.domain.model.PaymentPerson
-import com.example.pizzashift.shared.domain.model.PizzaPayment
 
 @Composable
 fun CheckoutScreen(
@@ -60,7 +57,6 @@ fun CheckoutScreen(
 
                 if(paymentAddress.value != null && paymentPerson.value != null) {
 
-                    Log.d("PAYMENT", paymentPerson.toString())
                     viewModel.validateSecondPartAndOrder(
                         address = paymentAddress.value!!,
                         paymentPerson = paymentPerson.value!!,

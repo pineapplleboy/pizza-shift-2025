@@ -22,6 +22,7 @@ import com.example.pizzashift.shared.domain.model.OrderedPizza
 @Composable
 fun OrderedPizzaSetting(
     pizza: OrderedPizza,
+    onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -33,7 +34,7 @@ fun OrderedPizzaSetting(
             modifier = Modifier.fillMaxWidth()
         ) {
             TextButton(
-                onClick = { /*TODO*/ },
+                onClick = onDelete,
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
