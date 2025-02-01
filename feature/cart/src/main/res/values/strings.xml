@@ -3,4 +3,5 @@
     <string name="cart_pizza_info">%1$s, %2$s + %3$s</string>
     <string name="change_ordered_pizza_button">Удалить</string>
     <string name="place_an_order">Оформить заказ</string>
+    <string name="empty_cart">В корзине пусто</string>
 </resources>

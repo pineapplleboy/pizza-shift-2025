@@ -68,6 +68,7 @@ fun CheckoutScreen(
 
         is CheckoutState.Success -> CheckoutScreenSuccess(
             modifier = modifier,
+            navController = navController,
             pizzasDescription = state.pizzasDescription,
             pizzaPayment = state.pizzaPayment,
             paymentPrice = state.paymentPrice

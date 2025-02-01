@@ -35,6 +35,7 @@ import com.example.pizzashift.component.Header
 import com.example.pizzashift.feature.pizza_details.presentation.PizzaDetailsState
 import com.example.pizzashift.feature.pizza_details.presentation.PizzaDetailsViewModel
 import com.example.pizzashift.shared.domain.model.Pizza
+import com.example.pizzashift.shared.domain.model.PizzaDough
 import com.example.pizzashift.shared.domain.model.PizzaIngredient
 
 @Composable
@@ -73,7 +74,8 @@ fun PizzaDetailsContent(
     modifier: Modifier = Modifier
 ) {
     val size = remember { mutableStateOf(pizza.sizes[0]) }
-    val toppings = remember { mutableStateOf(listOf<PizzaIngredient>()) } //пока что не изменяются
+    val toppings = remember { mutableStateOf(listOf<PizzaIngredient>()) }
+    val dough = remember { mutableStateOf(pizza.doughs[0]) }
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
@@ -113,7 +115,13 @@ fun PizzaDetailsContent(
             span = { GridItemSpan(3) }
         ) {
             Column {
-                PizzaMainInfo(pizza)
+                PizzaMainInfo(
+                    pizza = pizza,
+                    dough = dough.value,
+                    onDoughChanged = {
+                        dough.value = it
+                    }
+                )
                 Spacer(modifier = Modifier.height(24.dp))
             }
         }
@@ -175,9 +183,11 @@ fun PizzaDetailsContent(
                     viewModel.addPizzaToCart(
                         pizza = pizza,
                         size = size.value,
-                        dough = pizza.doughs[0], //тесто временно по дефолту первое
+                        dough = dough.value,
                         toppings = toppings.value
                     )
+
+                    navController.navigate("catalog")
                 }
             }
         }

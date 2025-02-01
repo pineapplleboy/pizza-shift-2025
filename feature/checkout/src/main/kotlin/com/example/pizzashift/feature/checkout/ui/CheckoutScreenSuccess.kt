@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.pizzashift.component.OrderInfo
 import com.example.pizzashift.feature.checkout.R
 import com.example.pizzashift.shared.domain.model.PizzaPayment
@@ -30,6 +31,7 @@ fun CheckoutScreenSuccess(
     pizzaPayment: PizzaPayment,
     paymentPrice: String,
     pizzasDescription: String,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -39,7 +41,9 @@ fun CheckoutScreenSuccess(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         IconButton(
-            onClick = {},
+            onClick = {
+                navController.navigate("catalog")
+            },
             modifier = Modifier.align(Alignment.End)
         ) {
             Icon(

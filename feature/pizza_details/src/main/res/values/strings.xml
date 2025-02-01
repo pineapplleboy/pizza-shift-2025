@@ -2,4 +2,6 @@
 <resources>
     <string name="add_to_cart">Добавить в корзину</string>
     <string name="add_topping_hint">Добавить по вкусу</string>
+    <string name="thin_dough">Тонкое</string>
+    <string name="thick_dough">Толстое</string>
 </resources>
