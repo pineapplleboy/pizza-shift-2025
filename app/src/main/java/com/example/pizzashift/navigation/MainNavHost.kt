@@ -13,6 +13,8 @@ import com.example.pizzashift.feature.cart.presentation.CartViewModel
 import com.example.pizzashift.feature.cart.ui.CartScreen
 import com.example.pizzashift.feature.checkout.presentation.CheckoutViewModel
 import com.example.pizzashift.feature.checkout.ui.CheckoutScreen
+import com.example.pizzashift.feature.orders.presentation.OrdersViewModel
+import com.example.pizzashift.feature.orders.ui.OrdersScreen
 import com.example.pizzashift.feature.pizza_catalog.ui.PizzaCatalogScreen
 import com.example.pizzashift.feature.pizza_details.ui.PizzaDetailsScreen
 import com.example.pizzashift.feature.pizza_catalog.presentation.PizzaCatalogViewModel
@@ -73,6 +75,13 @@ fun MainNavHost(
                 onAuthorized = {
                     navController.navigate(NavRoutes.Catalog.route)
                 },
+                viewModel = viewModel
+            )
+        }
+
+        composable(NavRoutes.Orders.route) {
+            val viewModel = koinViewModel<OrdersViewModel>()
+            OrdersScreen(
                 viewModel = viewModel
             )
         }

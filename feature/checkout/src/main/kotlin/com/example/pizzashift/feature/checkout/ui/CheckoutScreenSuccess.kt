@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pizzashift.component.OrderInfo
 import com.example.pizzashift.feature.checkout.R
 import com.example.pizzashift.shared.domain.model.PizzaPayment
 
@@ -71,57 +72,5 @@ fun CheckoutScreenSuccess(
                 pizzasDescription = pizzasDescription
             )
         }
-    }
-}
-
-@Composable
-fun OrderInfo(
-    pizzaPayment: PizzaPayment,
-    paymentPrice: String,
-    pizzasDescription: String,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        OrderInfoSegment(
-            name = stringResource(R.string.order),
-            content = pizzasDescription
-        )
-
-        OrderInfoSegment(
-            name = stringResource(R.string.address),
-            content = listOf(
-                pizzaPayment.receiverAddress.street,
-                pizzaPayment.receiverAddress.house,
-                pizzaPayment.receiverAddress.apartment
-            ).joinToString(", ")
-        )
-
-        OrderInfoSegment(
-            name = stringResource(R.string.final_price),
-            content = paymentPrice
-        )
-    }
-}
-
-@Composable
-fun OrderInfoSegment(
-    name: String,
-    content: String,
-    modifier: Modifier = Modifier
-) {
-    Column(modifier = modifier) {
-        Text(
-            text = name,
-            fontFamily = FontFamily(Font(com.example.pizzashift.shared.R.font.montserrat_font_family)),
-            fontSize = 12.sp
-        )
-        Text(
-            text = content,
-            fontFamily = FontFamily(Font(com.example.pizzashift.shared.R.font.montserrat_font_family)),
-            fontSize = 16.sp
-        )
     }
 }

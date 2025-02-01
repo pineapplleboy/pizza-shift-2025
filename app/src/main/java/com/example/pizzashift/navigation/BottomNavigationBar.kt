@@ -17,7 +17,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 
 @Composable
 fun BottomNavigationBarItems(navController: NavHostController) {
-    val items = listOf("catalog", "orders", "cart", "profile")
+    val items = listOf("catalog", "orders", "cart")
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
     NavigationBar(
@@ -31,7 +31,6 @@ fun BottomNavigationBarItems(navController: NavHostController) {
                         "catalog" -> Icon(Icons.Default.Home, contentDescription = label)
                         "orders" -> Icon(Icons.Default.CheckCircle, contentDescription = label)
                         "cart" -> Icon(Icons.Default.ShoppingCart, contentDescription = label)
-                        "profile" -> Icon(Icons.Default.Person, contentDescription = label)
                     }
                 },
                 label = { Text(label) },

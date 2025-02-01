@@ -14,7 +14,4 @@
     <string name="pay_for_pizza_hint">Оплатить</string>
     <string name="close_button_description">Закрыть</string>
     <string name="successfull_order">Оплата прошла успешно!</string>
-    <string name="order">Заказ</string>
-    <string name="address">Адрес доставки</string>
-    <string name="final_price">Сумма заказа</string>
 </resources>

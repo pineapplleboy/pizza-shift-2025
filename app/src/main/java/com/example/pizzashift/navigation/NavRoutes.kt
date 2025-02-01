@@ -18,6 +18,9 @@ sealed class NavRoutes(val route: String) {
     data object Authorization : NavRoutes("authorization")
 
     @Serializable
+    data object Orders : NavRoutes("orders")
+
+    @Serializable
     data object Pizza : NavRoutes("pizza_details/{pizza}") {
         fun createRoute(pizzaId: String) = "pizza_details/$pizzaId"
     }
